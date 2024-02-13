@@ -1,0 +1,18 @@
+; Left-rotates the bits of the value at 0x3050 once.
+; CSC 225, Assignment 2
+
+; Register Uses: 
+; R0: running total 
+; R1: wortking value 
+
+0011 0000 0000 0000     ; Start at 0x3000.
+0010 000 001001111      ; Load 0x3050 into R0.
+
+0001 001 000 000 000    ; ADD R0 with R0, store in R1
+0001 000 000 1 00000    ; ADD R0 with #0, store in R0 
+
+0000 011 000000001      ; if last touched register is negative 
+0001 001 001 1 00001    ; ADD R1 with #1, store in R1  
+
+0011 001 001001011      ; Store R1 in 0x3051 
+1111 0000 00100101      ; Halt.
